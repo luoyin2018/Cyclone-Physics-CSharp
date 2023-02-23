@@ -1,0 +1,11 @@
+<Project>
+	<PropertyGroup>
+		<Deterministic>true</Deterministic>
+		<OutputPath>$(SolutionDir)../Output/bin/$(MSBuildProjectName)/$(Configuration)-$(Platform)</OutputPath>
+		<BaseIntermediateOutputPath>$(SolutionDir)../Output/obj/$(MSBuildProjectName)</BaseIntermediateOutputPath>
+	    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+</Project>
