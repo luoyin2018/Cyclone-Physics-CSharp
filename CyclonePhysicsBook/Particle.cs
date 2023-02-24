@@ -22,20 +22,22 @@ namespace Cyclone
 
         private Particle() { }
         public static Particle FixParticle=> new Particle() { inverseMass = 0 };
-        public Particle(float mass, float damping)
+        
+        public Particle(float mass, float damping, Vector3 acc)
         {
             Debug.Assert(mass > eps);
             inverseMass = 1 / mass;
+
             Damping = damping;
+            Acceleration = acc;
         }
 
-        public void SetState(Vector3 pos, Vector3 vel, Vector3 acc)
+        public void SetInitState(Vector3 pos, Vector3 vel)
         {
             Position = pos;
             Velocity = vel;
-            Acceleration = acc;
         }
-        
+
         public void Integrate(float duration)
         {
             if (inverseMass <= eps) return;
