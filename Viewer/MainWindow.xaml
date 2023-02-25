@@ -4,9 +4,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
+        xmlns:h="http://helix-toolkit.org/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MouseLeftButtonUp="Window_MouseUp"
+        KeyUp="Window_KeyUp">
     <Grid>
-
+        <h:HelixViewport3D Grid.Column="1" 
+                           x:Name="Scene"
+                           ViewCubeHeight="150" ViewCubeWidth="150" 
+                           ViewCubeVerticalPosition="Bottom" 
+                           CoordinateSystemLabelForeground="White" 
+                           CoordinateSystemVerticalPosition="Bottom" 
+                           CoordinateSystemHorizontalPosition="Left" 
+                           CoordinateSystemHeight="150" CoordinateSystemWidth="150" 
+                           RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Unspecified" 
+                           ShowCoordinateSystem="True" ShowFrameRate="True" 
+                           IsManipulationEnabled="True" IsViewCubeEdgeClicksEnabled="True">
+            <h:HelixViewport3D.Camera>
+                <PerspectiveCamera 
+                    LookDirection="2038, -5200, -2930" 
+                    UpDirection="-0.145, 0.372, 0.917" 
+                    Position="-1571, 4801, 3774"/>
+            </h:HelixViewport3D.Camera>
+            <!-- Remember to add light to the scene -->
+            <h:GridLinesVisual3D Width="16000" Length="16000" Thickness="2.0" MinorDistance="500" MajorDistance="1000" Fill="#E5CFCECE" />
+            <h:SpotHeadLight Brightness="0.8"/>
+            <h:SpotHeadLight Brightness="0.5" Color="Gray"/>
+        </h:HelixViewport3D>
     </Grid>
 </Window>

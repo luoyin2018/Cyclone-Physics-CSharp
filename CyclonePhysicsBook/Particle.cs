@@ -13,7 +13,17 @@ namespace Cyclone
 
         //状态变量
         //位置和速度根据施加的力积分求得，计算过程中不会在外部直接更改这些值
-        public Vector3 Position { get; private set; }
+        private Vector3 _position;
+        public Vector3 Position 
+        {
+            get => _position;
+            private set
+            {
+                _position = value;
+                LocationUpdated?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
         public Vector3 Velocity { get; private set; } 
         public Vector3 Acceleration { get; private set; }  // 运动中不变，用于施加重力
 
@@ -22,24 +32,27 @@ namespace Cyclone
 
         private Particle() { }
         public static Particle FixParticle=> new Particle() { inverseMass = 0 };
-        public Particle(float mass, float damping)
+        public Particle(float mass, float damping, Vector3 acc)
         {
             Debug.Assert(mass > eps);
             inverseMass = 1 / mass;
+
             Damping = damping;
+            Acceleration = acc;
         }
 
-        public void SetState(Vector3 pos, Vector3 vel, Vector3 acc)
+        public void SetInitState(Vector3 pos, Vector3 vel)
         {
             Position = pos;
             Velocity = vel;
-            Acceleration = acc;
         }
         
-        public void Integrate(float duration)
+        public void Integrate(double time)
         {
             if (inverseMass <= eps) return;
-            Debug.Assert(duration > 0);
+            Debug.Assert(time > 0);
+
+            float duration = (float)time;
 
             // 根据受到的力更新内部状态
             Position += Velocity * duration;
@@ -53,5 +66,7 @@ namespace Cyclone
             // 清除力
             ForceAccum = Vector3.Zero;
         }
+
+        public event EventHandler LocationUpdated;
     }
 }

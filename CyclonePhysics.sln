@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viewer", "Viewer\Viewer.csproj", "{DD7793B5-6667-4FF6-AC4B-FBC311C5E4D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyclonePhysicsBook", "CyclonePhysicsBook\CyclonePhysicsBook.csproj", "{443F8C4C-0523-40AF-825C-F0DEACCFDD4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyclonePhysicsBook", "CyclonePhysicsBook\CyclonePhysicsBook.csproj", "{443F8C4C-0523-40AF-825C-F0DEACCFDD4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballistic", "demos\Ballistic\Ballistic.csproj", "{187C2949-9D44-4D88-9054-7E367D000CA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{443F8C4C-0523-40AF-825C-F0DEACCFDD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{443F8C4C-0523-40AF-825C-F0DEACCFDD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{443F8C4C-0523-40AF-825C-F0DEACCFDD4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187C2949-9D44-4D88-9054-7E367D000CA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187C2949-9D44-4D88-9054-7E367D000CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187C2949-9D44-4D88-9054-7E367D000CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187C2949-9D44-4D88-9054-7E367D000CA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

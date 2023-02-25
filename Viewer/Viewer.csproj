@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="HelixToolkit.Core.Wpf" Version="2.23.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\demos\Ballistic\Ballistic.csproj" />
+  </ItemGroup>
+
 </Project>
