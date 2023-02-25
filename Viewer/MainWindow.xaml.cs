@@ -38,7 +38,7 @@ namespace Viewer
 
             ballistic.Init(holder);
 
-            timer.Interval = TimeSpan.FromMilliseconds(5);
+            timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.Tick += Timer_Tick;
             timer.Start();
         }

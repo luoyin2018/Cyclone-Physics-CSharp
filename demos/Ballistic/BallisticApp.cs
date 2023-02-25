@@ -36,25 +36,25 @@ namespace Ballistic
 
         public void OnMouseUp()
         {
-
             Particle p = null;
+            Vector3 position = new Vector3(0, 0, 1.5f);
             switch (currentType)
             {
                 case BulletType.PISTOL:
                     p = new Particle(2.0f, 0.99f, new Vector3(0, 0, -1));
-                    p.SetInitState(Vector3.Zero, new Vector3(35, 0, 0));
+                    p.SetInitState(position, new Vector3(35, 0, 0));
                     break;
                 case BulletType.ARTILLERY:
                     p = new Particle(200, 0.99f, new Vector3(0, 0, -20));
-                    p.SetInitState(Vector3.Zero, new Vector3(40, 0, 30));
+                    p.SetInitState(position, new Vector3(40, 0, 30));
                     break;
                 case BulletType.FIREBALL:
                     p = new Particle(1, 0.9f, new Vector3(0, 0, 0.6f));
-                    p.SetInitState(Vector3.Zero, new Vector3(10, 0, 0));
+                    p.SetInitState(position, new Vector3(10, 0, 0));
                     break;
                 case BulletType.LASR:
                     p = new Particle(0.1f, 0.99f, new Vector3(0, 0, 0));
-                    p.SetInitState(Vector3.Zero, new Vector3(100, 0, 0));
+                    p.SetInitState(position, new Vector3(100, 0, 0));
                     break;
             }
             if(p != null)

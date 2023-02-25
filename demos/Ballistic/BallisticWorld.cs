@@ -28,7 +28,7 @@ namespace Ballistic
             foreach (var p in _particles)
             {
                 p.Integrate(time);
-                if (p.Position.X > 16)
+                if (p.Position.X > 200 || p.Position.Z < 0 ||p.Position.Z> 20)
                 {
                     notalive.Add(p);
                 }
