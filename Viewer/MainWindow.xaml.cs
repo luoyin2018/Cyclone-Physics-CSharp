@@ -26,7 +26,7 @@ namespace Viewer
     public partial class MainWindow : Window
     {
         private readonly BallisticApp ballistic = new BallisticApp();
-        private readonly DispatcherTimer timer = new DispatcherTimer();
+        private readonly DispatcherTimer timer = new DispatcherTimer(DispatcherPriority.Render);
 
         public MainWindow()
         {

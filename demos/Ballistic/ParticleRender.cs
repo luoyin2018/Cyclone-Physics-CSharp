@@ -43,7 +43,7 @@ namespace Ballistic
         {
             Matrix3D m = Matrix3D.Identity;
             Vector3D pos = new Vector3D(_particle.Position.X, _particle.Position.Y, _particle.Position.Z);
-            m.TranslatePrepend(pos * 100);
+            m.TranslatePrepend(pos * 1000);
 
             return new MatrixTransform3D(m);
         }
