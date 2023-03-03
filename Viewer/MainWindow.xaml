@@ -18,9 +18,8 @@
                            CoordinateSystemVerticalPosition="Bottom" 
                            CoordinateSystemHorizontalPosition="Left" 
                            CoordinateSystemHeight="150" CoordinateSystemWidth="150" 
-                           RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Unspecified" 
                            ShowCoordinateSystem="True" ShowFrameRate="True" 
-                           IsManipulationEnabled="True" IsViewCubeEdgeClicksEnabled="True">
+                           IsViewCubeEdgeClicksEnabled="True">
             <h:HelixViewport3D.Camera>
                 <PerspectiveCamera 
                     FieldOfView="45"

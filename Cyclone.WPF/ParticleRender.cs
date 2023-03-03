@@ -2,9 +2,8 @@
 using System;
 using System.Windows.Media.Media3D;
 using HelixToolkit.Wpf;
-using CommonEx.WPF;
 
-namespace Ballistic
+namespace Cyclone.WPF
 {
     public class ParticleRender
     {
@@ -43,7 +42,7 @@ namespace Ballistic
         {
             Matrix3D m = Matrix3D.Identity;
             Vector3D pos = new Vector3D(_particle.Position.X, _particle.Position.Y, _particle.Position.Z);
-            m.TranslatePrepend(pos * 1000);
+            m.TranslatePrepend(pos * 100);
 
             return new MatrixTransform3D(m);
         }

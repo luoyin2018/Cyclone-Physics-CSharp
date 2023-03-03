@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HelixToolkit.Wpf;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Windows.Media.Media3D;
 using System.Windows.Input;
 using Cyclone;
+using Cyclone.WPF;
+using System.Collections.Generic;
 
 namespace Ballistic
 {
@@ -16,25 +14,35 @@ namespace Ballistic
         FIREBALL,
         LASR
     }
-    public class BallisticApp
+    public class BallisticApp:AppBase
     {
-        public BallisticWorld World { get; } = new BallisticWorld();
-
-        private WorldRender _worldRender;
-
+        private readonly ParticleWorld World = new ParticleWorld();
+        private ParticleWorldRender _worldRender;
         private BulletType currentType;
 
-        public void Init(Model3DGroup holder)
+        public override void Init(Model3DGroup holder)
         {
-            _worldRender = new WorldRender(World, holder);
+            _worldRender = new ParticleWorldRender(World, holder);
         }
 
-        public void Update(double time)
+        public override void Update(double time)
         {
-            World.Update(time);
-        }
+            var notalive = new List<Particle>();
+            foreach (var p in World.Particles)
+            {
+                p.Integrate(time);
+                if (p.Position.X > 200 || p.Position.Z < 0 || p.Position.Z > 20)
+                {
+                    notalive.Add(p);
+                }
+            }
 
-        public void OnMouseUp()
+            foreach (var p in notalive)
+            {
+                World.RemoveParticle(p);
+            }
+        }
+        public override void OnMouseUp()
         {
             Particle p = null;
             Vector3 position = new Vector3(0, 0, 1.5f);
@@ -63,7 +71,7 @@ namespace Ballistic
             }
         }
 
-        public void OnKeyUp(Key key)
+        public override void OnKeyUp(Key key)
         {
             switch(key)
             {

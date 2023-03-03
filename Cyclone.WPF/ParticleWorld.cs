@@ -3,9 +3,9 @@ using Cyclone;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Ballistic
+namespace Cyclone.WPF
 {
-    public class BallisticWorld
+    public class ParticleWorld
     {
         private List<Particle> _particles = new List<Particle>();
         public IReadOnlyList<Particle> Particles => new ReadOnlyCollection<Particle>(_particles);
@@ -22,25 +22,6 @@ namespace Ballistic
             ParticleRemoved?.Invoke(this, EventArgs<Particle>.Create(p));
         }
 
-        public void Update(double time)
-        {
-            var notalive = new List<Particle>();
-            foreach (var p in _particles)
-            {
-                p.Integrate(time);
-                if (p.Position.X > 200 || p.Position.Z < 0 ||p.Position.Z> 100)
-                {
-                    notalive.Add(p);
-                }
-            }
-
-            foreach(var p in notalive)
-            {
-                RemoveParticle(p);
-            }
-            
-        }
-        
         public event EventHandler<EventArgs<Particle>> ParticleAdded;
         public event EventHandler<EventArgs<Particle>> ParticleRemoved;
     }

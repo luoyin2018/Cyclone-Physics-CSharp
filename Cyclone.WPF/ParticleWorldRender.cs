@@ -1,20 +1,17 @@
-﻿using Cyclone;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Windows.Media.Media3D;
 
-namespace Ballistic
+namespace Cyclone.WPF
 {
-    internal class WorldRender
+    public class ParticleWorldRender
     {
         private Model3DGroup _holder;
-        private BallisticWorld _world;
+        private ParticleWorld _world;
 
         private Dictionary<Particle, ParticleRender> _mapper 
             = new Dictionary<Particle, ParticleRender>();
 
-        public WorldRender(BallisticWorld world, Model3DGroup geomHolder)
+        public ParticleWorldRender(ParticleWorld world, Model3DGroup geomHolder)
         {
             _holder = geomHolder;
             _world = world;

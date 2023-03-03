@@ -67,6 +67,11 @@ namespace Cyclone
             ForceAccum = Vector3.Zero;
         }
 
+        public void ClearForceAccm()
+        {
+            ForceAccum = Vector3.Zero;
+        }
+
         public event EventHandler LocationUpdated;
     }
 }

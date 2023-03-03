@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
@@ -13,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\demos\Ballistic\Ballistic.csproj" />
+    <ProjectReference Include="..\demos\Fireworks\Fireworks.csproj" />
   </ItemGroup>
 
 </Project>
