@@ -27,8 +27,8 @@ namespace Cyclone
         public Vector3 Velocity { get; private set; } 
         public Vector3 Acceleration { get; private set; }  // 运动中不变，用于施加重力
 
-        //受到的力
-        public Vector3 ForceAccum { get; set; }  // 状态变化的根源
+        //受到的力: 状态变化的根源
+        public Vector3 ForceAccum { get; private set; }  
 
         private Particle() { }
         public static Particle FixParticle=> new Particle() { inverseMass = 0 };
@@ -46,10 +46,11 @@ namespace Cyclone
             Position = pos;
             Velocity = vel;
         }
-        
+        public bool HasFiniteMass=> inverseMass > eps;
+
         public void Integrate(double time)
         {
-            if (inverseMass <= eps) return;
+            if (!HasFiniteMass) return;
             Debug.Assert(time > 0);
 
             float duration = (float)time;
@@ -64,12 +65,16 @@ namespace Cyclone
             Velocity *= (float)Math.Pow(Damping, duration);   // 施加阻力，能量耗散，改善计算稳定性
 
             // 清除力
-            ForceAccum = Vector3.Zero;
+            ClearForceAccm();
         }
 
         public void ClearForceAccm()
         {
             ForceAccum = Vector3.Zero;
+        }
+        public void AddForce(Vector3 force)
+        {
+            ForceAccum += force;
         }
 
         public event EventHandler LocationUpdated;

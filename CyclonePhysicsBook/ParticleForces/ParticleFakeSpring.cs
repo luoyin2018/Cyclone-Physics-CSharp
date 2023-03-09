@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cyclone.ParicleForces
+namespace Cyclone.ParticleForces
 {
-    internal class ParicleSpring
+    internal class ParticleFakeSpring
     {
     }
 }
