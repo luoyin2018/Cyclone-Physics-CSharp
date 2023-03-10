@@ -17,6 +17,8 @@ namespace Cyclone.ParticleForces
 
         public void UpdateForce(Particle particle, float duration)
         {
+            if (!particle.HasFiniteMass) return;
+
             Vector3 toOther = Other.Position - particle.Position;
             float magnitude = toOther.Length();
 

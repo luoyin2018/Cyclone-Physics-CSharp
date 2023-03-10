@@ -68,7 +68,7 @@ namespace Cyclone
             ClearForceAccm();
         }
 
-        public void ClearForceAccm()
+        private void ClearForceAccm()
         {
             ForceAccum = Vector3.Zero;
         }

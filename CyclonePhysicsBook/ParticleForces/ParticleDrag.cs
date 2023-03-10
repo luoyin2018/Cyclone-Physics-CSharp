@@ -15,6 +15,8 @@ namespace Cyclone.ParticleForces
         // F = - vel_dir *(k1 * speed + k2 * speed^2); 
         public void UpdateForce(Particle particle, float duration)
         {
+            if (!particle.HasFiniteMass) return;
+
             Vector3 vel = particle.Velocity;
             float dragCoeff = vel.Length();
             dragCoeff = K1 * dragCoeff + K2 * dragCoeff * dragCoeff;
