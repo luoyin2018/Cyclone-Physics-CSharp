@@ -11,6 +11,10 @@ namespace Cyclone
         public Particle ParticalB { get; }
         public float Restituion { get; }
         public Vector3 ContactNormal { get; }
+        public float Penetration { get; }
+        public Vector3 MovementA { get; private set; }
+        public Vector3 MovementB { get; private set; }
+
         protected void Resolve(float duration)
         {
             ResolveVelocity(duration);
@@ -22,6 +26,7 @@ namespace Cyclone
                 ParticalA.Velocity : ParticalA.Velocity - ParticalB.Velocity;
             return Vector3.Dot( relativeVel , ContactNormal);
         }
+
         private void ResolveVelocity(float duration)
         {
             float totalInverseMass = ParticalB is null ?
@@ -43,7 +48,19 @@ namespace Cyclone
 
         private void ResolveInterpenetration(float duration)
         {
+            if (Penetration <= eps) return;
 
+            float totalInverseMass = ParticalB is null ?
+                ParticalA.InverseMass : ParticalA.InverseMass + ParticalB.InverseMass;
+            if (totalInverseMass < eps) return;
+
+            Vector3 movePerIMass = (Penetration / totalInverseMass) * ContactNormal;
+
+            MovementA = movePerIMass * ParticalA.InverseMass;
+            if(ParticalB != null)
+            {
+                MovementB = -movePerIMass * ParticalB.InverseMass;
+            }
         }
     }
 }
