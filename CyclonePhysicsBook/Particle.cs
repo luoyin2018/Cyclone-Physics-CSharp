@@ -8,6 +8,7 @@ namespace Cyclone
     {
         private static readonly float eps = (float)1e-10;
         private float inverseMass;
+        public float InverseMass => inverseMass;
         public float Mass => inverseMass < eps ? float.MaxValue : 1 / inverseMass;
         public float Damping { get; private set; }  // 不超过1
 
@@ -75,6 +76,11 @@ namespace Cyclone
         public void AddForce(Vector3 force)
         {
             ForceAccum += force;
+        }
+
+        public void AddImpulse(Vector3 momentum)
+        {
+            Velocity +=momentum * InverseMass;
         }
 
         public event EventHandler LocationUpdated;
